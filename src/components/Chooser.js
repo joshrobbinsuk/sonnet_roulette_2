@@ -5,7 +5,6 @@ export default function Chooser(props) {
       <div className="chooser-main">
         <input
           type="number"
-          max="200"
           value={number}
           onChange={handleNumberChange}
         />
