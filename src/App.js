@@ -11,9 +11,10 @@ function App() {
   const [number, setNumber] = useState("?");
   const [poem, setPoem] = useState(null);
   const [apiData, setApiData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [searchInput, setSearchInput] = useState("Heart");
   const [radioChoice, setRadioChoice] = useState("spin");
+  const [isLoading, setIsLoading] = useState(true);
+  const [requestError, setRequestError] = useState(false);
 
 
 //  random number between 1 and 154
@@ -26,15 +27,23 @@ function App() {
 // make api request on mount
   useEffect(() => {
     fetch("https://poetrydb.org/author,title/Shakespeare;Sonnet")
-      .then((res) => res.json())
-      .then((result) => {
+      .then((response) => {
+       setRequestError(!response.ok);
+       if (response.ok) {
+         return response.json();
+       } else {
+         throw Error('Response status: ' + response.status)
+       }
+      }).then((result) => {
         result.forEach(function (element, index) {
           element['number'] = index + 1
         })
         setApiData(result)
         setNumber(randomNumber())
         setIsLoading(false)
-        });
+        }).catch((error) => {
+          console.log(error)
+        })
   },[])
 
 
@@ -45,15 +54,15 @@ function App() {
        return poem.number === Number(number);
     }))
     }
-  },[number])
+  },[number, apiData])
 
 
 //  functions to handle input changes
   function handleNumberChange(e) {
     const {value} = e.target;
-    if ((value > - 1) & (value < 155)) {
+    if ((value > - 1) && (value < 155)) {
       setNumber(value);
-    }
+    } 
   }
 
   function updateSearchInput(e) {
@@ -69,63 +78,65 @@ function App() {
   }
 
   function handleSelectSearchOption(e) {
-    setNumber(apiData.findIndex((poem) => (
-          poem.title === e.target.textContent
-        )));
+    const selectedPoem = apiData.find((poem) => {
+          return poem.title === e.target.textContent
+        });
+    setNumber(selectedPoem.number)
     setRadioChoice('spin')
   }
   
 
-// ouput content 'is loading' or 'seach choices' or 'render sonnet'
+// OUTPUT CONTENT depending on request error || is loading || search choices || sonnet
   let outputContent;
-  if (isLoading) {
-    outputContent = <h2> Sonnets are loading... </h2>;
-  } else if (radioChoice === "search") {
-    outputContent = (
+  requestError
+  ? outputContent = <h2> There was a problem accessing the sonnets... Try reloading the page... </h2>
+  : isLoading
+  ? outputContent = <h2> Sonnets are loading... </h2>
+  : radioChoice === "search"
+  ? outputContent = (
       <SearchChoices
         apiData={apiData}
         searchInput={searchInput}
         handleSelectSearchOption={handleSelectSearchOption}
       />
-    );
-  } else {
-    outputContent = (
+    )
+  : outputContent = (
       <Sonnet number={number} poem={poem} />
     );
-  }
 
-// spin or choose or search input depending on raido choice
+
+// spin/choose/search input depending on radio choice
   let spinChooseSearch;
-  if (radioChoice === null || radioChoice === "spin") {
-    spinChooseSearch = (
+  radioChoice === null || radioChoice === "spin"
+  ? spinChooseSearch = (
       <Randomiser
         number={number}
-        handleClick={handleRandomiser}
+        handleRandomiser={handleRandomiser}
       />
-    );
-  } else if (radioChoice === "choose") {
-    spinChooseSearch = (
+    )
+  : radioChoice === "choose"
+  ? spinChooseSearch = (
       <Chooser
         number={number}
         handleNumberChange={handleNumberChange}
       />
-    );
-  } else if (radioChoice === "search") {
-    spinChooseSearch = (
+    )
+  : spinChooseSearch = (
       <Searcher
         searchInput={searchInput}
         updateSearchInput={updateSearchInput}
       />
     );
-  }
+
 
 // sidebars to display number or '?'
   let sidebarContent;
   radioChoice === "search"
-    ? (sidebarContent = "?")
-    : (sidebarContent = number);
+    ? sidebarContent = "?"
+    : sidebarContent = number;
 
 
+// render the app
   return (
     <div className="app-container">
           <div className="header-row-container">
