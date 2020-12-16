@@ -6,54 +6,22 @@ import RadioButtons from "./components/RadioButtons";
 import SearchChoices from "./components/SearchChoices";
 import Sonnet from "./components/Sonnet";
 import Searcher from "./components/Searcher";
+import useFetch from "./myFunctions/useFetch";
+import randomNumber from "./myFunctions/randomNumber";
 
 function App() {
-  const [number, setNumber] = useState("?");
+  const [number, setNumber] = useState(randomNumber);
   const [poem, setPoem] = useState(null);
-  const [apiData, setApiData] = useState([]);
   const [searchInput, setSearchInput] = useState("Heart");
   const [radioChoice, setRadioChoice] = useState("spin");
-  const [isLoading, setIsLoading] = useState(true);
-  const [requestError, setRequestError] = useState(false);
 
-  //  random number between 1 and 154
-  function randomNumber() {
-    // min and max included
-    return Math.floor(Math.random() * 154 + 1);
-  }
-
-  // make api request on mount
-  useEffect(() => {
-    fetch("https://poetrydb.org/author,title/Shakespeare;Sonnet")
-      .then((response) => {
-        setRequestError(!response.ok);
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw Error("Response status: " + response.status);
-        }
-      })
-      .then((result) => {
-        result.forEach(function (element, index) {
-          element["number"] = index + 1;
-        });
-        setApiData(result);
-        setNumber(randomNumber());
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // get API data on mount
+  const { apiData, isLoading, requestError } = useFetch();
 
   // select different poem every time number changes
   useEffect(() => {
     if (number > 0) {
-      setPoem(
-        apiData.find((poem) => {
-          return poem.number === Number(number);
-        })
-      );
+      setPoem(apiData[number - 1]);
     }
   }, [number, apiData]);
 
@@ -78,10 +46,10 @@ function App() {
   }
 
   function handleSelectSearchOption(e) {
-    const selectedPoem = apiData.find((poem) => {
+    const selectedPoemIndex = apiData.findIndex((poem) => {
       return poem.title === e.target.textContent;
     });
-    setNumber(selectedPoem.number);
+    setNumber(selectedPoemIndex + 1);
     setRadioChoice("spin");
   }
 
@@ -96,7 +64,7 @@ function App() {
       <div className="main-row-container">
         <div className="sidebar-container-1 sidebar-container">
           <div className="sidebar-number-holder">
-            <h3>{radioChoice === "search" ? "?" : number}</h3>
+            <h3>{radioChoice === "search" || isLoading ? "?" : number}</h3>
           </div>
         </div>
         <div className="content-container">
@@ -155,7 +123,7 @@ function App() {
         </div>
         <div className="sidebar-container-2 sidebar-container">
           <div className="sidebar-number-holder">
-            <h3>{radioChoice === "search" ? "?" : number}</h3>
+            <h3>{radioChoice === "search" || isLoading ? "?" : number}</h3>
           </div>
         </div>
       </div>
