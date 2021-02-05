@@ -1,5 +1,5 @@
 export default function RadioButtons(props) {
-  const { radioChoice, handleRadioChange} = props;
+  const { radioChoice, handleRadioChange } = props;
   return (
     <div className="radio-buttons">
       <div>

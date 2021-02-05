@@ -1,7 +1,7 @@
 body {
   background-color: #dd0707;
   padding: 40px 5%;
-  font-family: "Goldman", 'Times New Roman', Times, serif;
+  font-family: "Goldman", "Times New Roman", Times, serif;
   margin: auto;
 }
 
@@ -13,10 +13,10 @@ body::after {
   height: 60%;
   width: 100%;
   -webkit-transform: skewY(-4deg);
-          transform: skewY(-4deg);
+  transform: skewY(-4deg);
   background: #abafb0;
   -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
+  transform-origin: bottom left;
   z-index: -1;
 }
 
@@ -44,17 +44,17 @@ input:focus {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
   -webkit-padding-before: 20px;
-          padding-block-start: 20px;
+  padding-block-start: 20px;
 }
 
 .page-header {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
   max-width: 100%;
   text-align: center;
   text-transform: uppercase;
@@ -69,7 +69,7 @@ input:focus {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
   margin: 5px;
@@ -94,9 +94,9 @@ input:focus {
 
 .output-container {
   -webkit-border-after: 1px solid rgba(221, 7, 7, 0.5);
-          border-block-end: 1px solid rgba(221, 7, 7, 0.5);
+  border-block-end: 1px solid rgba(221, 7, 7, 0.5);
   -webkit-margin-after: 10px;
-          margin-block-end: 10px;
+  margin-block-end: 10px;
 }
 
 @media (min-width: 768px) {
@@ -105,14 +105,14 @@ input:focus {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
     max-width: 25%;
   }
   .content-container {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 75%;
-            flex: 0 0 75%;
+    -ms-flex: 0 0 75%;
+    flex: 0 0 75%;
     max-width: 75%;
   }
 }
@@ -132,14 +132,14 @@ input:focus {
 @media (min-width: 992px) {
   .sidebar-container-1 {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
     max-width: 25%;
   }
   .content-container {
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 50%;
-            flex: 0 0 50%;
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
     max-width: 50%;
   }
   .sidebar-container-2 {
@@ -147,8 +147,8 @@ input:focus {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 25%;
-            flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
     max-width: 25%;
   }
 }
@@ -174,15 +174,15 @@ input:focus {
 @media (min-width: 767px) {
   .sonnet-output h3 {
     -webkit-padding-end: 10%;
-            padding-inline-end: 10%;
+    padding-inline-end: 10%;
   }
 }
 
 .input-container {
   -webkit-border-after: 1px solid rgba(221, 7, 7, 0.5);
-          border-block-end: 1px solid rgba(221, 7, 7, 0.5);
+  border-block-end: 1px solid rgba(221, 7, 7, 0.5);
   -webkit-margin-after: 10px;
-          margin-block-end: 10px;
+  margin-block-end: 10px;
 }
 
 .radio-container {
@@ -191,11 +191,11 @@ input:focus {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .radio-buttons {
@@ -204,14 +204,14 @@ input:focus {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin: auto 0;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .radio-buttons * {
@@ -224,7 +224,7 @@ input:focus {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-wrap: nowrap;
 }
 
 @media (min-width: 370px) {
@@ -233,17 +233,17 @@ input:focus {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     -webkit-padding-start: 10%;
-            padding-inline-start: 10%;
+    padding-inline-start: 10%;
     -webkit-padding-end: 10%;
-            padding-inline-end: 10%;
+    padding-inline-end: 10%;
   }
   .radio-buttons {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -262,11 +262,11 @@ input:focus {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .spin-choose-search-container > div > div:nth-child(2) {
@@ -286,16 +286,16 @@ input:focus {
   border: 3px solid black;
   cursor: pointer;
   -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 4px 4px rgba(100, 75, 75, 0.3);
-          box-shadow: 0 0 4px 4px rgba(100, 75, 75, 0.3);
+  box-shadow: 0 0 4px 4px rgba(100, 75, 75, 0.3);
 }
 
 .randomiser .btn:active {
   -webkit-box-shadow: 0px 0px 0px 0px;
-          box-shadow: 0px 0px 0px 0px;
+  box-shadow: 0px 0px 0px 0px;
 }
 
 .randomiser .btn:active {
@@ -329,6 +329,6 @@ input:focus {
 .page-footer {
   color: #dd0707;
   -webkit-padding-after: 20px;
-          padding-block-end: 20px;
+  padding-block-end: 20px;
 }
 /*# sourceMappingURL=styles2.css.map */
