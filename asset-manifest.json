@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/joshrobbinsuk/sonnet_roulette_2/static/js/main.322b52e7.chunk.js",
+    "main.js.map": "/joshrobbinsuk/sonnet_roulette_2/static/js/main.322b52e7.chunk.js.map",
+    "runtime-main.js": "/joshrobbinsuk/sonnet_roulette_2/static/js/runtime-main.2cd2759b.js",
+    "runtime-main.js.map": "/joshrobbinsuk/sonnet_roulette_2/static/js/runtime-main.2cd2759b.js.map",
+    "static/js/2.f6710804.chunk.js": "/joshrobbinsuk/sonnet_roulette_2/static/js/2.f6710804.chunk.js",
+    "static/js/2.f6710804.chunk.js.map": "/joshrobbinsuk/sonnet_roulette_2/static/js/2.f6710804.chunk.js.map",
+    "static/js/3.061f39ba.chunk.js": "/joshrobbinsuk/sonnet_roulette_2/static/js/3.061f39ba.chunk.js",
+    "static/js/3.061f39ba.chunk.js.map": "/joshrobbinsuk/sonnet_roulette_2/static/js/3.061f39ba.chunk.js.map",
+    "index.html": "/joshrobbinsuk/sonnet_roulette_2/index.html",
+    "static/js/2.f6710804.chunk.js.LICENSE.txt": "/joshrobbinsuk/sonnet_roulette_2/static/js/2.f6710804.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2cd2759b.js",
+    "static/js/2.f6710804.chunk.js",
+    "static/js/main.322b52e7.chunk.js"
+  ]
+}

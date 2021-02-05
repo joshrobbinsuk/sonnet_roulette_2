@@ -1,0 +1,289 @@
+//  bootstrap mixins
+@import "./bootstrap/scss/functions.scss";
+@import "./bootstrap/scss/variables.scss";
+@import "./bootstrap/scss/mixins/_breakpoints.scss";
+@import "./bootstrap/scss/mixins/_grid.scss";
+
+// my mixins
+@mixin myShadow {
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 4px 4px rgba(100, 75, 75, 0.3);
+}
+
+@mixin myShadowActive {
+  box-shadow: 0px 0px 0px 0px;
+}
+
+@mixin myElementActive {
+  transform: translateX(-1px);
+  transform: translateY(-1px);
+}
+
+//  general
+body {
+  background-color: rgb(221, 7, 7);
+  padding: 40px 5%;
+  font-family: "Goldman", 'Times New Roman', Times, serif;
+  margin: auto;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60%;
+  width: 100%;
+  transform: skewY(-4deg);
+  background: #abafb0;
+  transform-origin: bottom left;
+  z-index: -1;
+}
+
+.app-container {
+  background-color: white;
+  max-inline-size: 1000px;
+  @include make-container();
+  min-height: 70vh;
+}
+
+input {
+  border:1px solid black;
+}
+
+input:focus {
+  outline: 2px solid rgb(221, 7, 7, 0.2);
+}
+
+//  header
+.header-row-container {
+  @include make-row();
+  padding-block-start: 20px;
+}
+
+.page-header {
+  @include make-col(12);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.page-header h1 {
+  color: rgb(221, 7, 7);
+}
+
+//  main
+.main-row-container {
+  @include make-row();
+  margin: 5px;
+}
+
+//  general content and sidebars
+// sidebars
+
+.content-container {
+  inline-size: 100%;
+}
+
+.sidebar-container {
+  display: none;
+}
+
+.sidebar-number-holder {
+  margin: auto;
+  font-size: 5em;
+}
+
+.sidebar-container-2 h3 {
+  color: rgb(221, 7, 7)
+}
+
+.output-container {
+   border-block-end: 1px solid rgba(221, 7, 7, 0.5);
+  margin-block-end: 10px;
+}
+
+@include media-breakpoint-up(md) {
+  .sidebar-container-1 {
+    display: flex;
+    @include make-col(3);
+  }
+
+  .content-container {
+    @include make-col(9);
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .app-container {
+    max-inline-size: 450px;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .app-container {
+    max-inline-size: 800px;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .sidebar-container-1 {
+    @include make-col(3);
+  }
+
+  .content-container {
+    @include make-col(6);
+  }
+  .sidebar-container-2 {
+    display: flex;
+    @include make-col(3);
+  }
+}
+
+@media (min-width: 440px) and (max-width: 767px) {
+  .app-container {
+    max-width: 420px;
+  }
+
+
+}
+
+@media (min-width: 767px) and (max-width: 990px) {
+  .app-container {
+    max-width: 680px;
+  }
+  .sidebar-number-holder {
+    font-size: 4em;
+  }
+  // .content-container {
+  //   padding-inline-end: 10%;
+  // }
+  .page-header h1 {
+    padding-left: 100px;
+  }
+}
+
+@media (min-width: 767px) {
+  .sonnet-output h3 {
+    padding-inline-end: 10%;
+  }
+}
+//  general input
+.input-container {
+  border-block-end: 1px solid rgba(221, 7, 7, 0.5);
+  margin-block-end: 10px;
+}
+
+// radio
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.radio-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: auto 0;
+  flex-wrap: wrap;
+}
+
+.radio-buttons * {
+  cursor: pointer;
+  padding-left: 4px;
+}
+
+.radio-buttons > * {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+@media (min-width: 370px) {
+  .input-row {
+    display: flex;
+    justify-content: space-around;
+    padding-inline-start: 10%;
+    padding-inline-end: 10%;
+  }
+  .radio-buttons {
+    flex-direction: column;
+    // justify-content: center;
+  }
+}
+//  spinner-searcher-chooser
+.spin-choose-search-container h2 {
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.spin-choose-search-container p {
+  font-size: 13px;
+}
+.spin-choose-search-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spin-choose-search-container > div > div:nth-child(2) {
+  padding-top: 10px;
+  max-width: 150px;
+  text-align: center;
+}
+
+// randomise
+
+.randomiser .btn {
+  height: 50px;
+  width: 50px;
+  background: url("../img/shakespeare.jpg");
+  background-size: contain;
+  background-position: top;
+  border-radius: 50%;
+  outline: none;
+  border: 3px solid rgb(0, 0, 0);
+  cursor: pointer;
+  @include myShadow();
+}
+
+.randomiser .btn:active {
+  @include myShadowActive();
+  // @include myElementActive();
+}
+
+.randomiser .btn:active {
+  outline: none;
+}
+
+//  chooser
+.chooser input {
+  width: 100px;
+}
+//  searcher
+.searcher input {
+  width: 100px;
+}
+
+.search-options {
+  padding: 10px 10%;
+}
+
+.search-option {
+  cursor: pointer;
+}
+
+.search-option:hover {
+  background-color: rgb(230, 219, 219);
+}
+
+//  sonnet
+.sonnet-output h3 {
+  max-inline-size: 480px;
+}
+
+// 
+.page-footer {
+  color: rgb(221, 7, 7);
+  padding-block-end: 20px;
+}
